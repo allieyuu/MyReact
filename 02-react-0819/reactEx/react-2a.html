@@ -3,7 +3,7 @@
 
 <head>
   <title>使用資料驅動</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <script src="../javascripts/vendor.js"></script>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -24,19 +24,37 @@
         </div>
         <!-- bootstrap card 版型 -->
         <!-- template：https://getbootstrap.com/docs/5.2/components/card/ -->
-        <!-- bootstrap card
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>        
-        -->
-
+        <!-- bootstrap card-->
         <!-- 練習開始 -->
+        <!-- 根元素 -->
+        <div id="root"></div>
+        <!-- 撰寫jsx -->
+        <script type="text/babel">
+          function App() {
+            //建立資料物件
+            const data={
+              imgUrl:'https://today-obs.line-scdn.net/0haH7C3C_ZPmcKOi7B0c1BMDJsMhY5XCRuKAt5UX8yN1YjFipmNFptBHo-MEsvWnliKlglBSY6aFMvWiplZA/w1200',
+              title:'Card title',
+              content:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+              btnLink:'https://today.line.me/tw/v2/article/aGmaMMG',
+              btnTitle:'Go somewhere'
+            }
+            return <>
+              {/*元件中的return區的註解前後加大括號*/}
+              <div className="card mb-3">
+                <img src={data.imgUrl} className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h5 className="card-title">{data.title}</h5>
+                  <p className="card-text">{data.content}</p>
+                  <a href={data.btnLink} className="btn btn-primary">{data.btnTitle}</a>
+                </div>
+              </div>
+            </>
+          }
 
+
+          ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+        </script>
         <!-- 練習結束 -->
       </main>
     </div>

@@ -24,30 +24,42 @@
                 </div>
                 <!-- 練習開始 -->
 
-                <!-- 步驟一：加入 root DOM -->
-                <div id="root"></div>
-
                 
+                <div id="root"></div>
+                <!-- 步驟一：加入 root DOM -->
+
                 <script type="text/babel">
                     // 程式撰寫區
                     function App() {
+                        const data = {
+                            title: "Beautiful Landscape",
+                            desc: "Enjoy this beautiful nature scenery.",
+                            btnLink: "https://www.example.com"
+                        };
+
                         return (
                             <div className="card" style={{ width: '18rem' }}>
                                 <div className="card-img-top" style={{
                                     height: '200px',
-                                    backgroundImage: "url('https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU='),
+                                    backgroundImage: "url('https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=')",
                                     backgroundSize: 'cover',
-                                    backgroundposition: 'center center',
+                                    backgroundPosition: 'center center',
                                 }}></div>
+                                
                                 <div className="card-body">
                                     <h5 className="card-title">{data.title}</h5>
                                     <p className="card-text">{data.desc}</p>
                                     <a href={data.btnLink} target="_blank" className="btn btn-primary">Go somewhere</a>
                                 </div>
                             </div >
-                        )
+                        );
                     }
+
+                    const el = document.getElementById('root');
+                    const root = ReactDOM.createRoot(el);
+                    root.render(<App />);
                 </script>
+
                 <!-- 練習結束 -->
             </main>
         </div>
