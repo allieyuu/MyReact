@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSX 常見問題</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="../javascripts/vendor.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        .app {
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        header {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="bg-lighte">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col post">
+                <!-- 章節標題 -->
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">我是一個標題</h1>
+                </div>
+
+                
+                <div id="root"></div>
+                <script type="text/babel">
+                    // Header 
+                    function Header() {
+                        return (
+                            <header>
+                                <h1>周四迎處暑！「3生肖」三喜臨門大轉運 桃花、財運一路攀升</h1>
+                            </header>
+                        );
+                    }
+
+
+                    // Image
+                    function Image() {
+                        return (
+                            <div className="image-container">
+                                <img src="#" alt="新聞圖片" />
+                            </div>
+                        );
+                    }
+
+                    // Content 
+                    function Content() {
+                        return (
+                            <div className="content">
+                                <p>8月22日處暑將至，命運之輪即將迎來新的轉折...</p>
+                            </div>
+                        );
+                    }
+
+                    // 主組件
+                    function App() {
+                        return (
+                            <div className="app">
+                                <Header />
+                                <Image />
+                                <Content />
+                            </div>
+                        );
+                    }
+
+                    export default App;
+
+                </script>
+    <link rel="stylesheet" href="../stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
