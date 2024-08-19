@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<div>
 
 <head>
     <title>JSX 常見問題</title>
@@ -37,62 +37,20 @@
         }
     </style>
 </head>
-<body class="bg-lighte">
-    <div class="container main my-5">
-        <div class="row">
-            <main class="col post">
-                <!-- 章節標題 -->
-                <div class="mb-4">
-                    <h1 class="mt-0 text-muted">我是一個標題</h1>
-                </div>
 
-                
-                <div id="root"></div>
-                <script type="text/babel">
-                    // Header 
-                    function Header() {
-                        return (
-                            <header>
-                                <h1>周四迎處暑！「3生肖」三喜臨門大轉運 桃花、財運一路攀升</h1>
-                            </header>
-                        );
-                    }
+<body id="root"></body></div>
+    <script type="text/babel">
+        function APP(){
+            return (
 
+            )
+        }
+        
+        ReactDOM
+            .creatRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
 
-                    // Image
-                    function Image() {
-                        return (
-                            <div className="image-container">
-                                <img src="#" alt="新聞圖片" />
-                            </div>
-                        );
-                    }
-
-                    // Content 
-                    function Content() {
-                        return (
-                            <div className="content">
-                                <p>8月22日處暑將至，命運之輪即將迎來新的轉折...</p>
-                            </div>
-                        );
-                    }
-
-                    // 主組件
-                    function App() {
-                        return (
-                            <div className="app">
-                                <Header />
-                                <Image />
-                                <Content />
-                            </div>
-                        );
-                    }
-
-                    export default App;
-
-                </script>
-    <link rel="stylesheet" href="../stylesheets/all.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </body>
 
 </html>
