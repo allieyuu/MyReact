@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元件模板</title>
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- HTML -->
+    <main>
+        <p1>來認識更多有關小鬱的種種吧！</p1>
+        <small>透過點擊分類閱讀不同類型的文章</small>
+        <p3>All</p3>
+        <div class="photo-box">
+            <
+        </div>
+    </main>
+    <!-- 步驟2：載入根元素（root） -->
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+        // 建立圖片元件
+        // 元件名稱字首大寫 
+        function GetImg(props) {
+            return (
+                <img title={props.title} src={props.imgUrl} alt="" style={{
+                    width: '300px',
+                    border: '5px solid red',
+                    padding: '50px',
+                }} />
+            )
+        }
+
+        //  步驟3：建立React元件 
+        function App() {
+            return (
+                <div>
+                    <h2>呼叫圖片元件</h2>
+                    {/*呼叫元件*/}
+                    {/*<GetImg></GetImg>*/}
+                    {/*使用自訂屬性名稱，傳值給元件*/}
+                    {/*元件使用props接收*/}
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg" title="圖1"/>
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg" title="圖2"/>
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg" title="圖3"/>
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"/>
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"/>
+                </div>
+            )
+        }
+
+        // 步驟4：渲染(顯示)App元件到根元件(root)上
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+
+</body>
+
+</html>

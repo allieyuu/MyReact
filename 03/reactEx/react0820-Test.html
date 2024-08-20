@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 步驟2：載入根元素（root） -->
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+        // 建立圖片元件
+        // 元件名稱字首大寫 
+        function Card(props) {
+            return <>
+                <div class="card" style={{width: '18rem'}}>
+                    <img src={props.imgUrl} class="card-img-top" alt="..."/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                </div>
+            </>
+        }
+
+        //  步驟3：建立React元件 
+        function App() {
+            return (
+                <div>
+                    <Card imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg" title="圖1" />
+                </div>
+            )
+        }
+
+        // 步驟4：渲染(顯示)App元件到根元件(root)上
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    </script>
+
+</body>
+
+</html>
