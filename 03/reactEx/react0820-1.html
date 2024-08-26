@@ -21,10 +21,14 @@
         // 元件名稱字首大寫 
         function GetImg(props) {
             return (
-                <img title={props.title} src={props.imgUrl} alt="" style={{
-                    width: '300px',
-                    border: '5px solid red',
-                }} />
+                <div>
+                    <img title={props.title} src={props.imgUrl} alt="" style={{
+                        width: props.width,
+                        border: '5px solid red',
+                        borderColor: props.bc,
+                        borderStyle: props.bs,
+                    }} />
+                </div>
             )
         }
 
@@ -37,11 +41,18 @@
                     {/*<GetImg></GetImg>*/}
                     {/*使用自訂屬性名稱，傳值給元件*/}
                     {/*元件使用props接收*/}
-                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg" title="圖1"/>
-                    <GetImg imgUrl="./images/photo.jpg" title="圖2"/>
-                    <GetImg imgUrl="./images/photo.jpg" title="圖3"/>
-                    <GetImg imgUrl="./images/photo.jpg"/>
-                    <GetImg imgUrl="./images/photo.jpg"/>
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"
+                        title="圖1" bs="solid" bc="#FFFF"/>
+
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"
+                        title="圖2" width="300px" />
+
+
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"
+                        title="圖3" />
+                    <GetImg imgUrl="https://depressytrouble.tw/wp-content/uploads/2016/04/Thumbnail_%E5%81%A5%E5%BA%B7%E4%B8%AD%E5%BF%83.jpg"
+                    />
+
                 </div>
             )
         }
