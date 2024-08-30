@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>按鈕加1-React寫法-useState</title>
     <!-- 步驟1：載入React, Bable -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -12,41 +12,67 @@
 </head>
 
 <body>
+    <!-- 原生JS寫法 -->
+    <button id="btn1">點擊我</button>
+    <span id="showNum">0</span>
     <script>
         let num = 0;
+        // 宣告變數，用來保存按鈕被點擊的次數
         let btn1 = document.getElementById('btn1');
+        // 使用 document.getElementById() 
+        // 方法來找到 HTML 中 ID 為 btn1 的按鈕
+        // 並將它保存到變數 btn1 中
         btn1.addEventListener('click', () => {
+            // 為按鈕 btn1 添加了一個 "點擊" 事件監聽器
+            // 當用戶點擊按鈕時，括號內箭頭函數（() => { ... }）會被執行
             num++;
+            // 每次按鈕被點擊時，這行程式碼會將 num 的值增加 1
             console.log(num);
             showNum.textContent = num;
         });
     </script>
+
     <hr>
-
+    <!-- 步驟2：載入根元素（root） -->
     <div id="root"></div>
+    <!-- 步驟3：建立React元件 -->
     <script type="text/babel">
-        console.log(React);
-        const {useStste} = React;
 
+
+        const { useStste } = React;
+        // 從 React 中提取 useState 函數
+        // 使用 useState 來管理 React 組件中的狀態
         function App() {
-            // 陣列中的參數:
-            // 前者是一個變數
-            // 後者是一個寫入變數的方法
-            // useState(預設值)
-            const [num2,setNum2]=useState(0);
-            // JSX寫法
+        // 一個名為 App 的 React 函數組件。
+        // 每個 React 組件都負責定義應用中的某一部分 UI 和它的行為
+
+            const [num2, setNum2] = useState(0);
+            //使用 useState 來宣告狀態變數 num2 和改變它的函數 setNum2
+            //useState(0) 表示 num2 的初始值為 0
+            //num2：是目前的狀態值
+            //setNum2：是一個函數，用來更新 num2 的值
+
             return (
                 <div>
-                    <button Click={() => {
+                    <button onClick={() => {
                         num2++
                         //num2++=num2+1
-                        console.log(num2+1);
-                    }}> +</button>
+                        console.log(num2 + 1);
+                        // 每次按下按鈕後，num2 的值會打印在瀏覽器的控制台中。
+                        // 這行程式碼是為了調試，讓開發者可以檢查 num2 的當前值。
+                    }}>+</button>
+
                     {console.log(num2)}
+
                     {num2}
+                    {/*它將 num2 的當前值顯示在頁面上。
+                        每次按鈕被點擊後，頁面會更新，並顯示最新的 num2 值。*/}
                 </div>
+
+
             )
         }
+
         // 步驟4：渲染(顯示)App元件到根元件(root)上
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 

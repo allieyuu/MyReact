@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>事件處理-原生JS</title>
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
 </head>
+
 <body>
-    <input type="text" id="input">
+    <h2>原生JS</h2>
+    <input type="text" id="input" value="abc">
+    <!-- 初始值是 "abc" -->
+
+
     <!-- 原生JS -->
     <script>
         //取得文字方塊
         const input = document.getElementById('input');
 
         //change事件：游標離開之後觸發
-        input.addEventListener('change',()=>{
-            console.log('change事件被觸發了');
+        input.addEventListener('change', (e) => {
+        // 'change'：當輸入框的值改變後，並且用戶將游標移出輸入框時，這個事件會被觸發
+            console.log('change事件被觸發了'+ e.target.value);
+        //打印輸入框當前的值，e.target.value 代表輸入框的內容。
         })
 
-        input.addEventListener('keyup',(e)=>{
-            // console.log('keyup事件被觸發了');
-            console.log('keyup事件'+e.target.value);
+        input.addEventListener('keyup', (e) => {
+        // 'keyup'：當用戶在輸入框中釋放按鍵時，這個事件會被觸發
+        // 每當用戶鬆開鍵盤上的一個按鍵，就會觸發 keyup 事件
+            console.log('keyup事件' + e.target.value);
         })
+    </script>
+
+    <hr>
+
+    <h2>React</h2>
+    <!-- input綁定useState-->
+    <input type="text" id="">
+    <!-- 步驟2：載入根元素（root） -->
+    <div id="root"></div>
+    <!-- 步驟3：建立React元件 -->
+    <script type="text/babel">
+        const { useState }=React;
+        function App() {
+            const[text,setText]=useState('');
+
+            return (
+                <div>
+                    {/*React環境下不可以直接使用value*/}
+                    {/*<input type="text" id="inputReact" value="123"/>*/}
+                    {/*React環境若要使用value，則必須改成defaulvalue*/}
+                    <input type="text" id="inputReact" value={text} 
+                        onChange={(e)=>{
+                        // console.log(e.target.value);
+                        setText(e.target.value);
+                    }}
+                    //失去焦點(游標) 
+                    onBlur={()=>{
+                        console.log('onBlur');
+                        console.log(text);
+                    }}
+                    //取得焦點(游標) 
+                    onfocus={()=>{
+                        console.log('onBlur');
+                    }}
+                
+                />
+                {/*顯示文字方塊內容*/}
+                {text}
+                    
+                </div>
+            )
+        }
+    // <!-- 步驟4：渲染(顯示)App元件到根元件(root)上 -->
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
     </script>
 
 </body>
