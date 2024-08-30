@@ -59,68 +59,46 @@
                     }
 
                     const App = () => {
-                        console.log(1);
-                        const [filterString, setFilterString] = useState('cat');
-
-                        const [jsonData, setJsonData] = useState([]);
-
-
-                        const onSearchHandler = (e) => {
-                            setFilterString(e.target.value);
-                        }
-
-                        // #1 建立非同步方法時，會因為渲染的關係不斷重複觸發
-
-                        //const getPhotos = async()=>{
-                        // 手寫城式測試是否能成功連上api
-                        // console.log(`${api}?client_id=${accessKey}&query=food`);      
-
-                        //const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
-                        // console.log(result);}
-                        //getPhotos(); //
-
-
-                        // #2 useEffect
-                        useEffect(() => {
-                            const getPhotos = async () => {
-                                const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
+                        // 取出本地端jason氣象資料，顯示在console中
+                        const App=() =>{
+                            const getWeatherData = async () =>{
+                                const result = await axios.get('/F-C0032-001.json');
                                 console.log(result);
 
-                                setJsonData(result, data.results);
-                            }
-                            getPhotos();
-                        }, []);
+                                const {location} = result.data.cwaopendata.dataset;
+                                console.log(location);
 
-                        return (<div>
-                            <SearchBox onSearchHandler={onSearchHandler} filterString={filterString} />
 
-                            {/*#4 將陣列資料渲染到畫面上*/}
-                            {/* 使用bootstrap建立一列兩欄的格線系統*/}
-                            <div className="row row-colors-2 g-3">
-                                {
-                                    jsonData.map((item) => {
-                                        return (
-                                            <div className="col" key={item.id}>
-                                                    <Card item={item} />
-                                            </div>
-                                        )
-                                    })
-                                }
+                            }                        
+                        getWeatherData();
+                            
+                        return (
+                            <div>
+                                <h2>各縣市名稱</h2>
+                                <ul>
+                                    {
+                                        location.map((city)=>{
+                                            return(
+                                                <div className="col" key={city.locationName}>
+                                                {}
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </ul>
                             </div>
-                        </div>)
+
+                        )
+                            
+                        }
+
                     }
+                        
                     ReactDOM
                         .createRoot(document.querySelector('#root'))
                         .render(<App />);
                 </script>
-            </main>
-        </div>
     </div>
-    <style>
-        .img-cover{
-            object-fit: cover;
-        }
-    </style>
             <link rel="stylesheet" href="./stylesheets/all.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </body>
