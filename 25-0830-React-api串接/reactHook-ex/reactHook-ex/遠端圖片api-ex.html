@@ -34,13 +34,18 @@
 
                     // 搜尋列的元件
                     const SearchBox = ({ onSearchHandler, filterString }) => {
-                        return <div>
-                            <label htmlFor="filter">搜尋</label>
-                            <input type="text" id="filter" className="form-control mb-3"
-                                value={filterString}
-                                onChange={onSearchHandler}
-                            />
-                        </div>
+                        return (
+                            <div>
+                                <label htmlFor="filter">搜尋</label>
+                                <input
+                                    type="text"
+                                    id="filter"
+                                    className="form-control mb-3"
+                                    value={filterString}
+                                    onChange={onSearchHandler}
+                                />
+                            </div>
+                        );
                     }
 
                     // #5a 建立卡片元件
@@ -86,28 +91,25 @@
                                 const result = await axios.get(`${api}?client_id=${accessKey}&query=${filterString}`);
                                 console.log(result);
 
-                                setJsonData(result, data.results);
+                                setJsonData(result.data.results);
                             }
                             getPhotos();
                         }, []);
 
-                        return (<div>
-                            <SearchBox onSearchHandler={onSearchHandler} filterString={filterString} />
-
-                            {/*#4 將陣列資料渲染到畫面上*/}
-                            {/* 使用bootstrap建立一列兩欄的格線系統*/}
-                            <div className="row row-colors-2 g-3">
-                                {
-                                    jsonData.map((item) => {
-                                        return (
-                                            <div className="col" key={item.id}>
-                                                    <Card item={item} />
-                                            </div>
-                                        )
-                                    })
-                                }
+                        return (
+                            <div>
+                                <SearchBox onSearchHandler={onSearchHandler} filterString={filterString} />
+                                {/*#4 將陣列資料渲染到畫面上*/}
+                                {/* 使用bootstrap建立一列兩欄的格線系統*/}
+                                <div className="row row-cols-2 g-3">
+                                    {jsonData.map((item) => (
+                                        <div className="col" key={item.id}>
+                                            <Card item={item} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>)
+                        );
                     }
                     ReactDOM
                         .createRoot(document.querySelector('#root'))
@@ -117,12 +119,14 @@
         </div>
     </div>
     <style>
-        .img-cover{
+        .img-cover {
             object-fit: cover;
         }
+
     </style>
-            <link rel="stylesheet" href="./stylesheets/all.css">
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="./stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </body>
 
 </html>
