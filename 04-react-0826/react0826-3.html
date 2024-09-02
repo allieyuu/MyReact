@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- 步驟2：載入根元素（root） -->
+    <div id="root"></div>
+    <!-- 步驟3：建立React元件 -->
+    <script type="text/babel">
+        // 建立一個搜尋元件
+        // 取出useState
+        const { useState } = React;
+
+        // #5 建立一個搜尋元件
+        const SearchBox = ({text, onSearchHandler}) => {
+            return(
+                // console.log('SearchBox元件被呼叫了')
+                <>
+                    <label htmlFor="search2">搜尋</label>
+                    <input type="text"
+                        id="search2"
+                        className=""
+                        value={text}
+                        onChange={onSearchHandler}
+                    />
+                </>
+            )
+        }
+
+        
+        function App() {
+            // #2 定義狀態
+            const []=useState('請輸入任意字');
+
+            // #3 建立一個更新資料的函式
+            const onSearchHandler= (e) =>{
+                setText(e.target.value);
+            }
+
+            // JSX寫法
+            // #4 加上搜尋標籤與樣式
+            return (
+                <div>
+                    <label htmlFor="search">搜尋</label>
+                    <input type="text"
+                        id="search"
+                        className=""
+                        value={text}
+                        onChange={onSearchHandler}
+                    />
+                    
+                    {text}
+                    <hr/>
+
+                    {/*#6 渲染sraechBox元件 */}
+                    <SearchBox text={text} onSearchHandler={onSearchHandler} />
+                    {/*#7 顯示更新後的結果 */}
+                    {text}
+                </div>
+            ) 
+            
+        }
+        
+
+
+
+
+    // <!-- 步驟4：渲染(顯示)App元件到根元件(root)上 -->
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+    
+    </script>
+    
+</body>
+
+</html>
