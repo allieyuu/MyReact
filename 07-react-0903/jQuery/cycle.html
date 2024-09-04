@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動輪播</title>
+    <link rel="stylesheet" href="./lightbox/css/lightbox.css">
+
+    <!-- 步驟1：載入React, Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .imgCycle img {
+            width: 300px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 撰寫jQuery
+        // $(document).ready(function(){
+        // })
+        useEffect(() => {
+            $('#imgCycle').cycle({
+                fx: 'zoom',
+                sync: false,
+                delay: -2000
+            });
+        }, []);
+
+
+
+        return (
+            <div>
+                <h1 class="title">自動輪播</h1>
+                <div class="imgCycle">
+                    <img src="./lightbox/images/01.jpg" alt="" />
+                    <img src="./lightbox/images/03.jpg" alt="" />
+                    <img src="./lightbox/images/01.jpg" alt="" />
+                    <img src="./lightbox/images/03.jpg" alt="" />
+                    <img src="./lightbox/images/01.jpg" alt="" />
+                    <img src="./lightbox/images/03.jpg" alt="" />
+                </div>
+            </div>
+        )
+        
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+
+    <script src="../jQuery/js/jquery-1.11.3.min.js"></script>
+
+    <script src="./js/jquery.cycle.all.js"></script>
+
+</body>
+
+</html>
